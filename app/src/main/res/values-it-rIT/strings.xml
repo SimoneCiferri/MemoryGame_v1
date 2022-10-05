@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MemoryGame</string>
+    <string name="title_game">Gioco</string>
+    <string name="title_scoreboard">Classifica</string>
+    <string name="title_infos">Info</string>
+</resources>
