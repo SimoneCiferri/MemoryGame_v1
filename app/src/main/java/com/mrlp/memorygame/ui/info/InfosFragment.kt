@@ -14,9 +14,6 @@ class InfosFragment : Fragment() {
 
     private var _binding: FragmentInfosBinding? = null
     private lateinit var mInfosViewModel: InfosViewModel
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(

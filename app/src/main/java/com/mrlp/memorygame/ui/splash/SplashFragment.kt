@@ -1,12 +1,14 @@
-package com.mrlp.memorygame.ui.splashfragment
+package com.mrlp.memorygame.ui.splash
 
+import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
+import com.mrlp.memorygame.R
 import com.mrlp.memorygame.databinding.FragmentSplashBinding
 import com.mrlp.memorygame.viewmodel.SplashViewModel
 
@@ -14,12 +16,10 @@ class SplashFragment : Fragment() {
 
     private var _binding: FragmentSplashBinding? = null
     private lateinit var mSplashViewModel: SplashViewModel
-
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         mSplashViewModel = ViewModelProvider(this).get(SplashViewModel::class.java)
@@ -31,7 +31,7 @@ class SplashFragment : Fragment() {
         mSplashViewModel.text.observe(viewLifecycleOwner){
             textView.text = it
         }
-
         return root
     }
+
 }

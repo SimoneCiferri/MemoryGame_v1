@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_game">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/navigation_game"
@@ -24,7 +24,13 @@
         tools:layout="@layout/fragment_infos" />
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.mrlp.memorygame.SplashFragment"
+        android:name="com.mrlp.memorygame.ui.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" />
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_navigation_game"
+            app:destination="@id/navigation_game"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 </navigation>

@@ -15,9 +15,6 @@ class GameFragment : Fragment() {
 
     private var _binding: FragmentGameBinding? = null
     private lateinit var mGameViewModel: GameViewModel
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
