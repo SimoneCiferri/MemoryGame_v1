@@ -11,4 +11,9 @@ class TutorialViewModel : ViewModel() {
     }
     val text: LiveData<String> = _text
 
+    fun onTutorialFinished() {
+        //implement tutorial finished logic
+        val hello = "hello"
+    }
+
 }

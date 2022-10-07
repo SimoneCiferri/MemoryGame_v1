@@ -8,8 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.mrlp.memorygame.R
+import com.mrlp.memorygame.adapter.TutorialAdapter
 import com.mrlp.memorygame.databinding.FragmentInfosBinding
 import com.mrlp.memorygame.databinding.FragmentTutorialBinding
+import com.mrlp.memorygame.ui.tutorial.screens.FirstScreenFragment
+import com.mrlp.memorygame.ui.tutorial.screens.SecondScreenFragment
+import com.mrlp.memorygame.ui.tutorial.screens.ThirdScreenFragment
 import com.mrlp.memorygame.viewmodel.TutorialViewModel
 
 class TutorialFragment : Fragment() {
@@ -27,12 +31,15 @@ class TutorialFragment : Fragment() {
         _binding = FragmentTutorialBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textTutorial
-        mTutorialViewModel.text.observe(viewLifecycleOwner){
-            textView.text = it
-        }
+        setAdapter()
 
         return root
+    }
+
+    private fun setAdapter() {
+        val fragmentList = arrayListOf( FirstScreenFragment(), SecondScreenFragment(), ThirdScreenFragment() )
+        val adapter = TutorialAdapter(fragmentList, requireActivity().supportFragmentManager, lifecycle)
+        binding.viewPager.adapter = adapter
     }
 
 }

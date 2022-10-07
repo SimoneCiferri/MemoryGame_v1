@@ -12,7 +12,14 @@ import com.mrlp.memorygame.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    companion object {
+
+        private lateinit var binding: ActivityMainBinding
+
+        fun showBottomNav(show: Boolean){
+            binding.navView.isVisible = show
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setBottomNav()
+        showBottomNav(false)
         setActionBar()
     }
 
@@ -31,10 +39,11 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_game, R.id.navigation_scoreboard, R.id.navigation_info))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        navView.isVisible = false
     }
 
     private fun setActionBar(){
         supportActionBar?.hide()
     }
+
+
 }

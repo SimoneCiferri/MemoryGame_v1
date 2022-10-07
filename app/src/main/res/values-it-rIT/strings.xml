@@ -4,4 +4,10 @@
     <string name="title_game">Gioco</string>
     <string name="title_scoreboard">Classifica</string>
     <string name="title_infos">Info</string>
+    <string name="next"><u>Avanti</u></string>
+    <string name="match_the_cards">Abbina le carte!</string>
+    <string name="save_your_score">Salva il tuo punteggio!</string>
+    <string name="get_the_code_for_free">Ottieni il codice!</string>
+    <string name="finish"><u>Fine</u></string>
+    <string name="back"><u>Indietro</u></string>
 </resources>

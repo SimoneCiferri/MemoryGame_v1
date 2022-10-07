@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.mrlp.memorygame.MainActivity
 import com.mrlp.memorygame.databinding.FragmentGameBinding
 import com.mrlp.memorygame.viewmodel.GameViewModel
-import com.mrlp.memorygame.viewmodel.PlayerViewModel
 
 class GameFragment : Fragment() {
 
@@ -27,11 +27,17 @@ class GameFragment : Fragment() {
         _binding = FragmentGameBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        setUiController()
+
         val textView: TextView = binding.textGame
         mGameViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root
+    }
+
+    private fun setUiController() {
+        MainActivity.showBottomNav(true)
     }
 
     override fun onDestroyView() {
