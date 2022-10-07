@@ -3,6 +3,7 @@ package com.mrlp.memorygame
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_game, R.id.navigation_scoreboard, R.id.navigation_info))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        navView.isVisible = false
     }
 
     private fun setActionBar(){
