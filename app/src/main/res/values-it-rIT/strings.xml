@@ -10,4 +10,6 @@
     <string name="get_the_code_for_free">Ottieni il codice!</string>
     <string name="finish"><u>Fine</u></string>
     <string name="back"><u>Indietro</u></string>
+    <string name="save_score">Salva Punteggio</string>
+    <string name="new_game">Nuova Partita</string>
 </resources>

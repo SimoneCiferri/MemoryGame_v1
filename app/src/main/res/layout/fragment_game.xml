@@ -6,17 +6,202 @@
     android:layout_height="match_parent"
     tools:context=".ui.game.GameFragment">
 
-    <TextView
-        android:id="@+id/text_game"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/ivAudio"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:contentDescription="@string/audio_mode"
+        android:src="@drawable/ic_baseline_volume_up_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#B02C2C2C" />
+
+    <ImageButton
+        android:id="@+id/ib1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="@dimen/imageButtonGameFragmentMargin"
+        android:layout_marginTop="@dimen/imageButtonGameFragmentMargin"
+        android:background="#00E6E0E0"
+        android:contentDescription="@string/card"
+        android:src="@drawable/quesmark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <ImageButton
+        android:id="@+id/ib2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/imageButtonGameFragmentMargin"
         android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:background="#00E6E0E0"
+        android:contentDescription="@string/card"
+        android:src="@drawable/quesmark"
+        app:layout_constraintEnd_toStartOf="@+id/ib3"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toEndOf="@+id/ib1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ib3"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="@dimen/imageButtonGameFragmentMargin"
+        android:layout_marginEnd="@dimen/imageButtonGameFragmentMargin"
+        android:background="#00E6E0E0"
+        android:contentDescription="@string/card"
+        android:src="@drawable/quesmark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ib4"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="@dimen/imageButtonGameFragmentMargin"
+        android:layout_marginTop="@dimen/imageButtonGameFragmentMargin"
+        android:background="#00E6E0E0"
+        android:contentDescription="@string/card"
+        android:src="@drawable/quesmark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ib1" />
+
+    <ImageButton
+        android:id="@+id/ib5"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/imageButtonGameFragmentMargin"
+        android:layout_marginEnd="8dp"
+        android:background="#00E6E0E0"
+        android:contentDescription="@string/card"
+        android:src="@drawable/quesmark"
+        app:layout_constraintEnd_toStartOf="@+id/ib6"
+        app:layout_constraintStart_toEndOf="@+id/ib4"
+        app:layout_constraintTop_toBottomOf="@+id/ib2" />
+
+    <ImageButton
+        android:id="@+id/ib6"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="@dimen/imageButtonGameFragmentMargin"
+        android:layout_marginEnd="@dimen/imageButtonGameFragmentMargin"
+        android:background="#00E6E0E0"
+        android:contentDescription="@string/card"
+        android:src="@drawable/quesmark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ib3" />
+
+    <ImageButton
+        android:id="@+id/ib7"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="@dimen/imageButtonGameFragmentMargin"
+        android:layout_marginTop="@dimen/imageButtonGameFragmentMargin"
+        android:background="#00E6E0E0"
+        android:contentDescription="@string/card"
+        android:src="@drawable/quesmark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ib4" />
+
+    <ImageButton
+        android:id="@+id/ib8"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/imageButtonGameFragmentMargin"
+        android:layout_marginEnd="8dp"
+        android:background="#00E6E0E0"
+        android:contentDescription="@string/card"
+        android:src="@drawable/quesmark"
+        app:layout_constraintEnd_toStartOf="@+id/ib9"
+        app:layout_constraintStart_toEndOf="@+id/ib7"
+        app:layout_constraintTop_toBottomOf="@+id/ib5" />
+
+    <ImageButton
+        android:id="@+id/ib9"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="@dimen/imageButtonGameFragmentMargin"
+        android:layout_marginEnd="@dimen/imageButtonGameFragmentMargin"
+        android:background="#00E6E0E0"
+        android:contentDescription="@string/card"
+        android:src="@drawable/quesmark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ib6" />
+
+    <ImageButton
+        android:id="@+id/ib10"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="@dimen/imageButtonGameFragmentMargin"
+        android:layout_marginTop="@dimen/imageButtonGameFragmentMargin"
+        android:background="#00E6E0E0"
+        android:contentDescription="@string/card"
+        android:src="@drawable/quesmark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ib7" />
+
+    <ImageButton
+        android:id="@+id/ib11"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/imageButtonGameFragmentMargin"
+        android:layout_marginEnd="8dp"
+        android:background="#00E6E0E0"
+        android:contentDescription="@string/card"
+        android:src="@drawable/quesmark"
+        app:layout_constraintEnd_toStartOf="@+id/ib12"
+        app:layout_constraintStart_toEndOf="@+id/ib10"
+        app:layout_constraintTop_toBottomOf="@+id/ib8" />
+
+    <ImageButton
+        android:id="@+id/ib12"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="@dimen/imageButtonGameFragmentMargin"
+        android:layout_marginEnd="@dimen/imageButtonGameFragmentMargin"
+        android:background="#00E6E0E0"
+        android:contentDescription="@string/card"
+        android:src="@drawable/quesmark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ib9"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <Button
+        android:id="@+id/btnNewGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="@dimen/imageButtonGameFragmentMargin"
+        android:backgroundTint="#000000"
+        android:text="@string/new_game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ib11" />
+
+    <Button
+        android:id="@+id/btnSaveScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="@dimen/imageButtonGameFragmentMargin"
+        android:backgroundTint="#000000"
+        android:text="@string/save_score"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

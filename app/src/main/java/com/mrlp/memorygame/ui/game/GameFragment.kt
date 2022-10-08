@@ -29,10 +29,6 @@ class GameFragment : Fragment() {
 
         setUiController()
 
-        val textView: TextView = binding.textGame
-        mGameViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 

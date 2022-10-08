@@ -10,5 +10,9 @@
     <string name="get_the_code_for_free">Get the code for free!</string>
     <string name="finish"><u>Finish</u></string>
     <string name="back"><u>Back</u></string>
-    <string name="memorygame_icon">MemoryGame_icon</string>
+    <string name="memorygame_icon" translatable="false">MemoryGame_icon</string>
+    <string name="card" translatable="false">card</string>
+    <string name="audio_mode" translatable="false">audioAction</string>
+    <string name="save_score">Save Score</string>
+    <string name="new_game">New Game</string>
 </resources>
