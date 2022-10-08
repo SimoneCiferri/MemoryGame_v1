@@ -6,8 +6,21 @@ import androidx.lifecycle.ViewModel
 
 class GameViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is game Fragment"
+    private var _error = MutableLiveData<Int>().apply {
+        value = 0
     }
-    val text: LiveData<String> = _text
+
+    var error: LiveData<Int> = _error
+
+    fun increaseErrors(){
+        _error.value = error.value?.plus(1)
+    }
+
+    private fun resetErrors(){
+        _error.value = 0
+    }
+
+    fun newGame() {
+        resetErrors()
+    }
 }
