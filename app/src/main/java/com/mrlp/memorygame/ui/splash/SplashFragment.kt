@@ -2,13 +2,13 @@ package com.mrlp.memorygame.ui.splash
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.lifecycle.get
-import com.mrlp.memorygame.R
+import androidx.navigation.fragment.findNavController
 import com.mrlp.memorygame.databinding.FragmentSplashBinding
 import com.mrlp.memorygame.viewmodel.SplashViewModel
 
@@ -27,11 +27,21 @@ class SplashFragment : Fragment() {
         _binding = FragmentSplashBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textSplash
-        mSplashViewModel.text.observe(viewLifecycleOwner){
-            textView.text = it
-        }
+        selectNextDestination()
+
         return root
+    }
+
+    private fun selectNextDestination() {
+        Handler(Looper.getMainLooper()).postDelayed({
+            if(mSplashViewModel.tutorialDone(requireActivity())){
+                val navToGame = SplashFragmentDirections.actionSplashFragmentToNavigationGame2()
+                findNavController().navigate(navToGame)
+            }else{
+                val navToTutorial = SplashFragmentDirections.actionSplashFragmentToTutorialFragment()
+                findNavController().navigate(navToTutorial)
+            }
+        },3000)
     }
 
 }

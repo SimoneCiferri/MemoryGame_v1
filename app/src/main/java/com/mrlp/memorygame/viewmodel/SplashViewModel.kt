@@ -1,13 +1,13 @@
 package com.mrlp.memorygame.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
 
 class SplashViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is splash Fragment"
+    private val mTutorialViewModel = TutorialViewModel()
+
+    fun tutorialDone(requireActivity: FragmentActivity): Boolean{
+        return mTutorialViewModel.tutorialDone(requireActivity)
     }
-    val text: LiveData<String> = _text
 }

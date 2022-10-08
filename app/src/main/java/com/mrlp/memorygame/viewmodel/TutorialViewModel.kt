@@ -1,19 +1,24 @@
 package com.mrlp.memorygame.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import android.content.Context
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
 
 class TutorialViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is tutorial Fragment"
-    }
-    val text: LiveData<String> = _text
+    private val tutorial = "Tutorial"
+    private val finish = "Finish"
 
-    fun onTutorialFinished() {
-        //implement tutorial finished logic
-        val hello = "hello"
+    fun onTutorialFinished(requireActivity: FragmentActivity) {
+        val sharedPref = requireActivity.getSharedPreferences(tutorial, Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putBoolean(finish, true)
+        editor.apply()
+    }
+
+    fun tutorialDone(requireActivity: FragmentActivity): Boolean{
+        val sharedPref = requireActivity.getSharedPreferences(tutorial, Context.MODE_PRIVATE)
+        return sharedPref.getBoolean(finish, false)
     }
 
 }

@@ -7,10 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import androidx.viewpager2.widget.ViewPager2
-import com.mrlp.memorygame.R
 import com.mrlp.memorygame.databinding.FragmentThirdScreenBinding
-import com.mrlp.memorygame.ui.tutorial.TutorialFragment
 import com.mrlp.memorygame.ui.tutorial.TutorialFragmentDirections
 import com.mrlp.memorygame.viewmodel.ThirdScreenViewModel
 
@@ -36,7 +33,7 @@ class ThirdScreenFragment : Fragment() {
 
     private fun setUiController() {
         binding.tvFinish.setOnClickListener{
-            mThirdScreenViewModel.onTutorialFinished()
+            mThirdScreenViewModel.onTutorialFinished(requireActivity())
             val navToGame = TutorialFragmentDirections.actionTutorialFragmentToNavigationGame()
             Navigation.findNavController(binding.root).navigate(navToGame)
         }
