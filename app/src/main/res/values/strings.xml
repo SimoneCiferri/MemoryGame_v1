@@ -15,4 +15,5 @@
     <string name="audio_mode" translatable="false">audioAction</string>
     <string name="save_score">Save Score</string>
     <string name="new_game">New Game</string>
+    <string name="invalid_move">Invalid move!</string>
 </resources>

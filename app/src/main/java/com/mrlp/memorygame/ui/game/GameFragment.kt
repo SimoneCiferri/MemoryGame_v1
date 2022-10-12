@@ -1,11 +1,14 @@
 package com.mrlp.memorygame.ui.game
 
+import android.animation.Animator
 import android.animation.AnimatorInflater
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -18,8 +21,15 @@ class GameFragment : Fragment() {
 
     private var _binding: FragmentGameBinding? = null
     private val binding get() = _binding!!
+    private val images = mutableListOf(R.drawable.pikachu, R.drawable.bulbasaur, R.drawable.charmander,
+        R.drawable.gengar, R.drawable.squirtle, R.drawable.mew, R.drawable.pikachu, R.drawable.bulbasaur,
+        R.drawable.charmander, R.drawable.gengar, R.drawable.squirtle, R.drawable.mew)
+    private val _CHECK_ERROR: Int = 0
+    private val _CARD_MATCHED: Int = 2
+    private val _CARD_NOT_MATCHED: Int = 3
     private lateinit var mGameViewModel: GameViewModel
     private lateinit var buttons: List<ImageButton>
+    private lateinit var zoom: Animator
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -27,7 +37,7 @@ class GameFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View {
         mGameViewModel = ViewModelProvider(this).get(GameViewModel::class.java)
-
+        zoom = AnimatorInflater.loadAnimator(requireContext(), R.animator.zoom)
         _binding = FragmentGameBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -44,6 +54,7 @@ class GameFragment : Fragment() {
     private fun setUiController() {
         setTextViews()
         setImageButtons()
+        setImageView()
         setButtons()
     }
 
@@ -60,30 +71,64 @@ class GameFragment : Fragment() {
         for(btn in buttons){
             btn.isEnabled = false
             btn.alpha = 0.5f
-            btn.setOnClickListener {
-
+        }
+        buttons.forEachIndexed { index, btn ->
+            btn.setOnClickListener{
+                val checkRes = mGameViewModel.updateModel(index)
+                if(checkRes == _CHECK_ERROR){
+                    makeToast(getString(R.string.invalid_move))
+                }else{
+                    if (checkRes == _CARD_MATCHED){
+                        flipImageButton(buttons[index])
+                        flipImageButton(buttons[mGameViewModel.getIndexOfPrevCard()!!])
+                    }
+                    if(checkRes == _CARD_NOT_MATCHED){
+                        mGameViewModel.increaseErrors()
+                    }
+                }
+                updateImageButtons()
             }
         }
     }
 
-    private fun setButtons() {
-        //binding.btnSaveScore.isVisible = false
+    private fun setImageView() {
+        //ivAudioSet()
+        binding.ivAudio.setOnClickListener{
+            //add check for ost here
+            binding.ivAudio.setImageResource(R.drawable.ic_baseline_volume_off_24)
+        }
+    }
 
+    private fun ivAudioSet() {
+        //check if ost is now playing and set appropriate image
+    }
+
+    private fun setButtons() {
+        binding.btnSaveScore.isVisible = false
+
+        zoomButton(binding.btnNewGame)
         binding.btnNewGame.setOnClickListener {
             binding.btnSaveScore.isVisible = false
-            mGameViewModel.newGame()
+            images.shuffle()
+            mGameViewModel.newGame(images, buttons)
             for(btn in buttons){
                 btn.isEnabled = true
                 btn.alpha = 1f
                 flipImageButton(btn)
             }
-            //updateImageButtons()
-
+            updateImageButtons()
         }
 
         binding.btnSaveScore.setOnClickListener {
             mGameViewModel.increaseErrors()
+            //here navigation to saveScoreFragment
         }
+    }
+
+    private fun zoomButton(btn: Button) {
+        zoom.setTarget(btn)
+        zoom.duration = 1000
+        zoom.start()
     }
 
     private fun flipImageButton(btn: ImageButton) {
@@ -94,9 +139,20 @@ class GameFragment : Fragment() {
     }
 
     private fun updateImageButtons() {
-        //updateViews
+        mGameViewModel.getCards().forEachIndexed { index, card ->
+            val btn = buttons[index]
+            if(card.isMatched){
+                btn.alpha = 0.3f
+            }else{
+                btn.alpha = 1f
+            }
+            btn.setImageResource(if(card.isFaceUp) card.ID else R.drawable.quesmark)
+        }
     }
 
+    private fun makeToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
