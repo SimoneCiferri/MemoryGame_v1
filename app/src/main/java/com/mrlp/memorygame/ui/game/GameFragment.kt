@@ -95,7 +95,7 @@ class GameFragment : Fragment() {
 
 
     private fun setImageView() {
-        //ivAudioSet()
+        ivAudioSet()
         binding.ivAudio.setOnClickListener{
             //add check for ost here
             binding.ivAudio.setImageResource(R.drawable.ic_baseline_volume_off_24)
@@ -103,7 +103,11 @@ class GameFragment : Fragment() {
     }
 
     private fun ivAudioSet() {
-        //check if ost is now playing and set appropriate image
+        if(mGameViewModel.isOstPlaying()){
+            binding.ivAudio.setImageResource(R.drawable.ic_baseline_volume_up_24)
+        }else{
+            binding.ivAudio.setImageResource(R.drawable.ic_baseline_volume_off_24)
+        }
     }
 
     private fun setButtons() {

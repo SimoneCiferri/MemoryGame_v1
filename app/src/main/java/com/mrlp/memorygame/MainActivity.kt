@@ -4,17 +4,20 @@ import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.mrlp.memorygame.databinding.ActivityMainBinding
+import com.mrlp.memorygame.viewmodel.MainActivityViewModel
 
 class MainActivity : AppCompatActivity() {
 
     companion object {
 
         private lateinit var binding: ActivityMainBinding
+        private lateinit var mMainActivityViewModel: MainActivityViewModel
 
         fun showBottomNav(show: Boolean){
             binding.navView.isVisible = show
@@ -23,13 +26,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        mMainActivityViewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setBottomNav()
         showBottomNav(false)
         setActionBar()
+        setOST()
     }
 
     private fun setBottomNav(){
@@ -45,5 +49,18 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
     }
 
+    private fun setOST() {
+        mMainActivityViewModel.setOST(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mMainActivityViewModel.mpPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mMainActivityViewModel.mpResume()
+    }
 
 }
