@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.mrlp.memorygame.MainActivity
 import com.mrlp.memorygame.R
 import com.mrlp.memorygame.databinding.FragmentGameBinding
+import com.mrlp.memorygame.model.Values
 import com.mrlp.memorygame.viewmodel.GameViewModel
 
 class GameFragment : Fragment() {
@@ -24,9 +25,6 @@ class GameFragment : Fragment() {
     private val images = mutableListOf(R.drawable.pikachu, R.drawable.bulbasaur, R.drawable.charmander,
         R.drawable.gengar, R.drawable.squirtle, R.drawable.mew, R.drawable.pikachu, R.drawable.bulbasaur,
         R.drawable.charmander, R.drawable.gengar, R.drawable.squirtle, R.drawable.mew)
-    private val _CHECK_ERROR: Int = 0
-    private val _CARD_MATCHED: Int = 2
-    private val _CARD_NOT_MATCHED: Int = 3
     private lateinit var mGameViewModel: GameViewModel
     private lateinit var buttons: List<ImageButton>
     private lateinit var zoom: Animator
@@ -70,26 +68,31 @@ class GameFragment : Fragment() {
             binding.ib12 )
         for(btn in buttons){
             btn.isEnabled = false
-            btn.alpha = 0.5f
+            btn.alpha = Values.ALPHA_BUTTON_DISABLED
         }
         buttons.forEachIndexed { index, btn ->
             btn.setOnClickListener{
                 val checkRes = mGameViewModel.updateModel(index)
-                if(checkRes == _CHECK_ERROR){
+                if(checkRes == Values.CHECK_ERROR){
                     makeToast(getString(R.string.invalid_move))
                 }else{
-                    if (checkRes == _CARD_MATCHED){
+                    if (checkRes == Values.CARD_MATCHED){
                         flipImageButton(buttons[index])
-                        flipImageButton(buttons[mGameViewModel.getIndexOfPrevCard()!!])
                     }
-                    if(checkRes == _CARD_NOT_MATCHED){
+                    if(checkRes == Values.CARD_NOT_MATCHED){
                         mGameViewModel.increaseErrors()
                     }
                 }
                 updateImageButtons()
+                if(mGameViewModel.checkAllCards()){
+                    mGameViewModel.setFinalTime()
+                    binding.btnSaveScore.isVisible = true
+                    zoomButton(binding.btnSaveScore)
+                }
             }
         }
     }
+
 
     private fun setImageView() {
         //ivAudioSet()
@@ -113,7 +116,7 @@ class GameFragment : Fragment() {
             mGameViewModel.newGame(images, buttons)
             for(btn in buttons){
                 btn.isEnabled = true
-                btn.alpha = 1f
+                btn.alpha = Values.ALPHA_BUTTON_ENABLED
                 flipImageButton(btn)
             }
             updateImageButtons()
@@ -127,13 +130,13 @@ class GameFragment : Fragment() {
 
     private fun zoomButton(btn: Button) {
         zoom.setTarget(btn)
-        zoom.duration = 1000
+        zoom.duration = Values.ZOOM_ANIM_DURATION
         zoom.start()
     }
 
     private fun flipImageButton(btn: ImageButton) {
         val flip = AnimatorInflater.loadAnimator(requireContext(), R.animator.flip)
-        flip.duration = 350
+        flip.duration = Values.FLIP_ANIM_DURATION
         flip.setTarget(btn)
         flip.start()
     }
@@ -142,9 +145,9 @@ class GameFragment : Fragment() {
         mGameViewModel.getCards().forEachIndexed { index, card ->
             val btn = buttons[index]
             if(card.isMatched){
-                btn.alpha = 0.3f
+                btn.alpha = Values.ALPHA_BUTTON_MATCHED
             }else{
-                btn.alpha = 1f
+                btn.alpha = Values.ALPHA_BUTTON_ENABLED
             }
             btn.setImageResource(if(card.isFaceUp) card.ID else R.drawable.quesmark)
         }

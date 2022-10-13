@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mrlp.memorygame.model.Card
+import com.mrlp.memorygame.model.Values
 
 class GameViewModel : ViewModel() {
 
@@ -13,10 +14,6 @@ class GameViewModel : ViewModel() {
     private var milliStop: Long = 0
     private var timeInMillis: Long = 0
     private var indexOfSelectedCard: Int? = null
-    private val _CHECK_ERROR: Int = 0
-    private val _FIRSTCARD: Int = 1
-    private val _CARD_MATCHED: Int = 2
-    private val _CARD_NOT_MATCHED: Int = 3
     private var _error = MutableLiveData<Int>().apply {
         value = 0
     }
@@ -51,13 +48,13 @@ class GameViewModel : ViewModel() {
     fun updateModel(cardPosition: Int): Int {
         val card = cards[cardPosition]
         if(card.isFaceUp){
-            return _CHECK_ERROR
+            return Values.CHECK_ERROR
         }else{
             val checkRes: Int
             if(indexOfSelectedCard == null){
                 restoreCards()
                 indexOfSelectedCard = cardPosition
-                checkRes = _FIRSTCARD
+                checkRes = Values.FIRST_CARD
             }else{
                 checkRes = checkForMatch(indexOfSelectedCard!!, cardPosition)
                 indexOfSelectedCard = null
@@ -71,9 +68,9 @@ class GameViewModel : ViewModel() {
         if(cards[indexOfSelectedCard].ID == cards[cardPosition].ID){
             cards[indexOfSelectedCard].isMatched = true
             cards[cardPosition].isMatched = true
-            return _CARD_MATCHED
+            return Values.CARD_MATCHED
         }else{
-            return _CARD_NOT_MATCHED
+            return Values.CARD_NOT_MATCHED
         }
     }
 
@@ -85,8 +82,17 @@ class GameViewModel : ViewModel() {
         }
     }
 
-    fun getIndexOfPrevCard(): Int? {
-        return indexOfSelectedCard
+    fun checkAllCards(): Boolean {
+        for(card in cards){
+            if(!card.isMatched){
+                return false
+            }
+        }
+        return true
+    }
+
+    fun setFinalTime() {
+        milliStop = System.currentTimeMillis()
     }
 
 }

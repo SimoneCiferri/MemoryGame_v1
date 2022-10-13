@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.Database
+import com.mrlp.memorygame.model.Values
 
 @Database(entities = [Player::class], version = 1, exportSchema = false)
 abstract class PlayerDatabase: RoomDatabase() {
@@ -22,7 +23,7 @@ abstract class PlayerDatabase: RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     PlayerDatabase::class.java,
-                    "player_database").build()
+                    Values.DATABASE_NAME).build()
                 INSTANCE = instance
                 return instance
             }
