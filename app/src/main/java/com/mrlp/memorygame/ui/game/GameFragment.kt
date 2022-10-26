@@ -46,7 +46,7 @@ class GameFragment : Fragment() {
     }
 
     private fun showBottomNav() {
-        MainActivity.showBottomNav(true)
+        (activity as MainActivity).showBottomNav(true)
     }
 
     private fun setUiController() {

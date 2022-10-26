@@ -14,15 +14,7 @@ import com.mrlp.memorygame.viewmodel.MainActivityViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    companion object {
-
-        private lateinit var binding: ActivityMainBinding
-
-        fun showBottomNav(show: Boolean){
-            binding.navView.isVisible = show
-        }
-    }
-
+    private lateinit var binding: ActivityMainBinding
     private lateinit var mMainActivityViewModel: MainActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +37,10 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_game, R.id.navigation_scoreboard, R.id.navigation_info))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    fun showBottomNav(show: Boolean){
+        binding.navView.isVisible = show
     }
 
     private fun setActionBar(){
