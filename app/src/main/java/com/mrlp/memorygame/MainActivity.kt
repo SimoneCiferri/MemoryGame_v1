@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         showBottomNav(false)
         setActionBar()
         setOST()
+        setUiController()
     }
 
     private fun setBottomNav(){
@@ -47,6 +48,28 @@ class MainActivity : AppCompatActivity() {
 
     private fun setActionBar(){
         supportActionBar?.hide()
+    }
+
+    private fun setUiController() {
+        ivAudioSet()
+        binding.ivAudio1.setOnClickListener{
+            if(mMainActivityViewModel.isOSTPlaying()){
+                mMainActivityViewModel.setOSTState(false)
+                binding.ivAudio1.setImageResource(R.drawable.ic_baseline_volume_off_24)
+            }else{
+                mMainActivityViewModel.setOSTState(true)
+                binding.ivAudio1.setImageResource(R.drawable.ic_baseline_volume_up_24)
+            }
+
+        }
+    }
+
+    private fun ivAudioSet() {
+        if(mMainActivityViewModel.isOSTPlaying()){
+            binding.ivAudio1.setImageResource(R.drawable.ic_baseline_volume_up_24)
+        }else{
+            binding.ivAudio1.setImageResource(R.drawable.ic_baseline_volume_off_24)
+        }
     }
 
     private fun setOST() {

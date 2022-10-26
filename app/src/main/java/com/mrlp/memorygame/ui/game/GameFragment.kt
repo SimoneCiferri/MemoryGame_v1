@@ -52,7 +52,6 @@ class GameFragment : Fragment() {
     private fun setUiController() {
         setTextViews()
         setImageButtons()
-        setImageView()
         setButtons()
     }
 
@@ -90,23 +89,6 @@ class GameFragment : Fragment() {
                     zoomButton(binding.btnSaveScore)
                 }
             }
-        }
-    }
-
-
-    private fun setImageView() {
-        ivAudioSet()
-        binding.ivAudio.setOnClickListener{
-            //add check for ost here
-            binding.ivAudio.setImageResource(R.drawable.ic_baseline_volume_off_24)
-        }
-    }
-
-    private fun ivAudioSet() {
-        if(mGameViewModel.isOstPlaying()){
-            binding.ivAudio.setImageResource(R.drawable.ic_baseline_volume_up_24)
-        }else{
-            binding.ivAudio.setImageResource(R.drawable.ic_baseline_volume_off_24)
         }
     }
 

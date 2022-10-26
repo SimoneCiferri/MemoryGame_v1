@@ -1,16 +1,14 @@
 package com.mrlp.memorygame.viewmodel
 
 import android.widget.ImageButton
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import com.mrlp.memorygame.MainActivity
 import com.mrlp.memorygame.model.Card
 import com.mrlp.memorygame.model.Values
 
 class GameViewModel : ViewModel() {
 
     private lateinit var cards: List<Card>
-    private val mMainActivityViewModel = MainActivityViewModel()
     private var milliStart: Long = 0
     private var milliStop: Long = 0
     private var timeInMillis: Long = 0
@@ -94,10 +92,6 @@ class GameViewModel : ViewModel() {
 
     fun setFinalTime() {
         milliStop = System.currentTimeMillis()
-    }
-
-    fun isOstPlaying(): Boolean {
-        return true
     }
 
 }

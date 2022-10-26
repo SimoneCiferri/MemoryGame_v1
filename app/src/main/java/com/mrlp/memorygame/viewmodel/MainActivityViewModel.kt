@@ -27,4 +27,18 @@ class MainActivityViewModel : ViewModel() {
         }
     }
 
+    fun isOSTPlaying(): Boolean {
+        return mp.isPlaying
+    }
+
+    fun setOSTState(state: Boolean) {
+        mpState = state
+        if(state){
+            mpResume()
+        }else{
+            mpPause()
+        }
+
+    }
+
 }
