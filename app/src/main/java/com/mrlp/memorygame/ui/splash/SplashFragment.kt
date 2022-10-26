@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.mrlp.memorygame.databinding.FragmentSplashBinding
-import com.mrlp.memorygame.model.Values
+import com.mrlp.memorygame.utils.Values
 import com.mrlp.memorygame.viewmodel.SplashViewModel
 
 class SplashFragment : Fragment() {
@@ -42,7 +42,7 @@ class SplashFragment : Fragment() {
                 val navToTutorial = SplashFragmentDirections.actionSplashFragmentToTutorialFragment()
                 findNavController().navigate(navToTutorial)
             }
-        },Values.SPLASH_FRAGMENT_DELAY)
+        }, Values.SPLASH_FRAGMENT_DELAY)
     }
 
 }

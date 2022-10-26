@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.Database
-import com.mrlp.memorygame.model.Values
+import com.mrlp.memorygame.utils.Values
 
 @Database(entities = [Player::class], version = 1, exportSchema = false)
 abstract class PlayerDatabase: RoomDatabase() {

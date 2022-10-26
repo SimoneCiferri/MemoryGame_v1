@@ -17,12 +17,13 @@ class MainActivity : AppCompatActivity() {
     companion object {
 
         private lateinit var binding: ActivityMainBinding
-        private lateinit var mMainActivityViewModel: MainActivityViewModel
 
         fun showBottomNav(show: Boolean){
             binding.navView.isVisible = show
         }
     }
+
+    private lateinit var mMainActivityViewModel: MainActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

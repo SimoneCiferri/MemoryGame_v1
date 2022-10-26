@@ -2,9 +2,8 @@ package com.mrlp.memorygame.viewmodel
 
 import android.widget.ImageButton
 import androidx.lifecycle.*
-import com.mrlp.memorygame.MainActivity
 import com.mrlp.memorygame.model.Card
-import com.mrlp.memorygame.model.Values
+import com.mrlp.memorygame.utils.Values
 
 class GameViewModel : ViewModel() {
 

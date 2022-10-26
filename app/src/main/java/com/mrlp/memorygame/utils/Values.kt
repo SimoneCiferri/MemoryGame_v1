@@ -1,4 +1,4 @@
-package com.mrlp.memorygame.model
+package com.mrlp.memorygame.utils
 
 class Values {
 
@@ -13,6 +13,8 @@ class Values {
         const val FIRST_CARD: Int = 1
         const val CARD_MATCHED: Int = 2
         const val CARD_NOT_MATCHED: Int = 3
+        const val TUTORIAL = "Tutorial"
+        const val FINISH = "Finish"
 
         const val DATABASE_NAME = "player_database"
     }

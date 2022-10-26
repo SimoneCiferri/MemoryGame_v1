@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.mrlp.memorygame.MainActivity
 import com.mrlp.memorygame.R
 import com.mrlp.memorygame.databinding.FragmentGameBinding
-import com.mrlp.memorygame.model.Values
+import com.mrlp.memorygame.utils.Values
 import com.mrlp.memorygame.viewmodel.GameViewModel
 
 class GameFragment : Fragment() {
