@@ -8,13 +8,13 @@ class PlayerRepository(private val playerDao: PlayerDao) {
 
     val readAllData: LiveData<List<Player>> = playerDao.readAllData()
 
-    suspend fun addPlayer(player: Player){
-        playerDao.addPlayer(player)
+    suspend fun addScore(player: com.mrlp.memorygame.model.Player) {
+        val newPlayer = Player(player.id, player.player, player.time, player.data, player.errors, player.score, player.achievements)
+        playerDao.addPlayer(newPlayer)
     }
 
     fun getCount():Int{
         return playerDao.getCount()
     }
-
 
 }

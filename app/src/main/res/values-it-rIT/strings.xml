@@ -18,4 +18,7 @@
     <string name="error">Errori =</string>
     <string name="score">Punteggio =</string>
     <string name="savecup">Coppa salvataggio</string>
+    <string name="playernametoolong">Nome giocatore troppo lungo!</string>
+    <string name="insertplayername">Inserisci nome giocatore!</string>
+    <string name="scoresaved">Punteggio salvato!</string>
 </resources>

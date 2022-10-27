@@ -79,5 +79,12 @@
             android:name="timeToShow"
             app:argType="string"
             android:defaultValue='"00:00:00"' />
+        <action
+            android:id="@+id/action_saveScoreFragment_to_navigation_scoreboard"
+            app:destination="@id/navigation_scoreboard"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/navigation_game"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

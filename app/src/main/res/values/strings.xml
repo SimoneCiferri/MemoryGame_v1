@@ -21,4 +21,7 @@
     <string name="error">Error =</string>
     <string name="score">Score =</string>
     <string name="savecup">savecup</string>
+    <string name="playernametoolong">Player name too long!</string>
+    <string name="insertplayername">Please insert player name!</string>
+    <string name="scoresaved">Score saved!</string>
 </resources>
