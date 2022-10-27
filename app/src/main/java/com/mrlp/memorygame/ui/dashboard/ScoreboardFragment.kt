@@ -26,11 +26,13 @@ class ScoreboardFragment : Fragment() {
         _binding = FragmentScoreboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        mScoreboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        setRecyclerAndUserVM()
+
         return root
+    }
+
+    private fun setRecyclerAndUserVM() {
+        TODO("Not yet implemented")
     }
 
     override fun onDestroyView() {
