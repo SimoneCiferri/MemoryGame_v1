@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.mrlp.memorygame.MainActivity
 import com.mrlp.memorygame.R
 import com.mrlp.memorygame.databinding.FragmentGameBinding
@@ -109,8 +110,9 @@ class GameFragment : Fragment() {
         }
 
         binding.btnSaveScore.setOnClickListener {
-            mGameViewModel.increaseErrors()
-            //here navigation to saveScoreFragment
+            val navToSaveSore = GameFragmentDirections.actionNavigationGameToSaveScoreFragment(
+                mGameViewModel.error.value!!, mGameViewModel.getTotalTime(), mGameViewModel.getStringTime())
+            Navigation.findNavController(binding.root).navigate(navToSaveSore)
         }
     }
 

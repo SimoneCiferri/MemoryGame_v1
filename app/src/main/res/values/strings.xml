@@ -16,4 +16,9 @@
     <string name="save_score">Save Score</string>
     <string name="new_game">New Game</string>
     <string name="invalid_move">Invalid move!</string>
+    <string name="player_name">Player Name</string>
+    <string name="time">Time =</string>
+    <string name="error">Error =</string>
+    <string name="score">Score =</string>
+    <string name="savecup">savecup</string>
 </resources>

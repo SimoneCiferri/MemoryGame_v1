@@ -12,4 +12,10 @@
     <string name="back"><u>Indietro</u></string>
     <string name="save_score">Salva Punteggio</string>
     <string name="new_game">Nuova Partita</string>
+    <string name="invalid_move">Mossa non valida</string>
+    <string name="player_name">Nome Giocatore</string>
+    <string name="time">Tempo =</string>
+    <string name="error">Errori =</string>
+    <string name="score">Punteggio =</string>
+    <string name="savecup">Coppa salvataggio</string>
 </resources>

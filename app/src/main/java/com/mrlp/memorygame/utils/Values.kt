@@ -15,6 +15,7 @@ class Values {
         const val CARD_NOT_MATCHED: Int = 3
         const val TUTORIAL = "Tutorial"
         const val FINISH = "Finish"
+        const val SCORE_CONSTANT: Int = 30000000
 
         const val DATABASE_NAME = "player_database"
     }

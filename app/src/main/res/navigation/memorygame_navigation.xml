@@ -9,7 +9,14 @@
         android:id="@+id/navigation_game"
         android:name="com.mrlp.memorygame.ui.game.GameFragment"
         android:label="@string/title_game"
-        tools:layout="@layout/fragment_game" />
+        tools:layout="@layout/fragment_game" >
+        <action
+            android:id="@+id/action_navigation_game_to_saveScoreFragment"
+            app:destination="@id/saveScoreFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="false" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_scoreboard"
@@ -54,5 +61,23 @@
             app:exitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/tutorialFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/saveScoreFragment"
+        android:name="com.mrlp.memorygame.ui.game.SaveScoreFragment"
+        android:label="fragment_save_score"
+        tools:layout="@layout/fragment_save_score" >
+        <argument
+            android:name="errors"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="totalTime"
+            app:argType="long"
+            android:defaultValue="15000L" />
+        <argument
+            android:name="timeToShow"
+            app:argType="string"
+            android:defaultValue='"00:00:00"' />
     </fragment>
 </navigation>

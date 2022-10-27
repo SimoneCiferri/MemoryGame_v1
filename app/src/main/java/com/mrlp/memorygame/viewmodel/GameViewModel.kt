@@ -91,6 +91,24 @@ class GameViewModel : ViewModel() {
 
     fun setFinalTime() {
         milliStop = System.currentTimeMillis()
+        timeInMillis = (milliStop - milliStart)
+    }
+
+     fun getStringTime(): String{
+        var min = ((timeInMillis/1000)/60).toString()
+        if(min == "0"){
+            min = "00"
+        }
+        var sec = ((timeInMillis/1000)%60).toString()
+        if(sec.toInt() < 10){
+            sec = "0$sec"
+        }
+        val msec = (((timeInMillis/10)/10)%10).toString() +((timeInMillis/10)%10).toString() + (timeInMillis%10).toString()
+        return "$min:$sec:$msec"
+    }
+
+    fun getTotalTime():Long{
+        return timeInMillis
     }
 
 }
